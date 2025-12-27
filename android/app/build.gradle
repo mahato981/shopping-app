@@ -50,10 +50,10 @@ android {
             // Use release signing config if keystore exists, otherwise use debug
             signingConfig = keystorePropertiesFile.exists() ? signingConfigs.release : signingConfigs.debug
             
-            // Enable code shrinking, obfuscation, and optimization
-            minifyEnabled = true
-            shrinkResources = true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Disable code shrinking to avoid R8 issues with Flutter
+            minifyEnabled = false
+            shrinkResources = false
+            // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             signingConfig = signingConfigs.debug
